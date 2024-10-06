@@ -1,6 +1,5 @@
 # 1-API-Users
 
-
 ## Descrição
 
 Esta API permite buscar, editar, apagar e listar usuários cadastrados. Utiliza métodos HTTP e é construída com Node.js, Express, MongoDB e Prisma. A interface visual é desenvolvida com React e Vite.
@@ -23,56 +22,75 @@ Esta API permite buscar, editar, apagar e listar usuários cadastrados. Utiliza 
 
 ## Instalação
 
-##### 1. Clone o repositório:
+> 1. Clone o repositório
 
    ```bash
    git clone https://github.com/seu-usuario/seu-repositorio.git
+```
 
+- Navegue até o diretório do projeto:
+`cd seu-repositorio`
+- Instale as dependências do backend:
+`npm install`
+- Configure o banco de dados MongoDB no arquivo .env:
+`DATABASE_URL="sua-string-de-conexao-mongodb"`
+- Execute as migrações do Prisma:
+`bash npx prisma migrate dev`
+- Inicie o servidor backend:
+ `npm run dev`
 
-[Navegue até o diretório do projeto:
-cd seu-repositorio
+> - Endpoints da API
 
-Instale as dependências do backend:
-npm install
+**GET** ``/users:`` Lista todos os usuários.
+**GET** ``/users/:id:`` Busca um usuário pelo ID.
+**POST** ``/users:`` Cria um novo usuário.
+**PUT** ``/users/:id:`` Atualiza um usuário pelo ID.
+**DELETE** ``/users/:id:`` Remove um usuário pelo ID.
 
-Configure o banco de dados MongoDB no arquivo .env:
-DATABASE_URL="sua-string-de-conexao-mongodb"
-
-Execute as migrações do Prisma:
-npx prisma migrate dev
-
-Inicie o servidor backend:
-npm run dev
-
-Endpoints da API
-GET /users: Lista todos os usuários.
-GET /users/:id: Busca um usuário pelo ID.
-POST /users: Cria um novo usuário.
-PUT /users/:id: Atualiza um usuário pelo ID.
-DELETE /users/:id: Remove um usuário pelo ID.
 Interface Visual
-Navegue até o diretório client:
+
+1. Navegue até o diretório client:
+
+````bash
 cd client
-
 Instale as dependências do frontend:
+````
+
+ 2. Instale as dependências do frontend:
+
+````bash
 npm install
+````
 
-Inicie o servidor de desenvolvimento do Vite:
+3. Inicie o servidor de desenvolvimento do Vite:
+
+````bash
 npm run dev
+````
 
-Contribuição
-Faça um fork do projeto.
-Crie uma nova branch:
+## Contribuição
+
+1. Faça um fork do projeto.
+
+2. Crie uma nova branch:
+
+```bash
 git checkout -b minha-nova-funcionalidade
+```
 
-Faça suas alterações e commit:
+3. Faça suas alterações e commit:
+
+```bash
 git commit -m 'Adiciona nova funcionalidade'
+```
 
-Envie para o repositório remoto:
+4. Envie para o repositório remoto:
+
+```bash
 git push origin minha-nova-funcionalidade
+```
 
-Abra um Pull Request.
-Licença
-Este projeto está licenciado sob a Licença MIT. Veja o arquivo LICENSE para mais detalhes.
+5. Abra um Pull Request.
 
-Se precisar de mais informações ou ajustes, estou à disposição!
+>Licença
+Este projeto está licenciado sob a Licença **MIT**. Veja o arquivo LICENSE para mais detalhes.
