@@ -17,22 +17,38 @@ app.post("/usuarios", async (req, res) => {
       age: req.body.age,
     },
   });
+  api.interceptors.response.use(
+    response => response,
+    error => {
+      console.error("Erro na API:", error);
+      alert("Ocorreu um erro ao se comunicar com o servidor.");
+      return Promise.reject(error);
+    }
+  );
 
   res.status(201).json(req.body);
 });
 
 app.get("/usuarios", async (req, res) => {
-  const users = await prisma.user.findMany();
+  let users = [];
+
+  if (req.query) {
+    users = await prisma.user.findMany({
+      where: {
+        name: req.query.name,
+        email: req.query.email,
+        age: req.query.age,
+      },
+    });
+  }
 
   res.status(200).json(users);
 });
 
 app.put("/usuarios/:id", async (req, res) => {
-  console.log(req);
-
   await prisma.user.update({
     where: {
-      id: req.params.id,
+      id: req.params.id, // convertendo para string
     },
     data: {
       name: req.body.name,
@@ -47,13 +63,11 @@ app.put("/usuarios/:id", async (req, res) => {
 app.delete("/usuarios/:id", async (req, res) => {
   await prisma.user.delete({
     where: {
-      id: req.params.id,
+      id: req.params.id, // Converta o ID para string
     },
   });
 
-  res
-    .status(200)
-    .json({ message: "Usuario deletado com sucess, ouuei yeeear!!!" });
+  res.status(200).json({ message: "Usuario deletado com sucesso!" });
 });
 
 app.listen(3000);
